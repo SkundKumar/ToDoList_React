@@ -1,6 +1,6 @@
 # ToDo List App
 
-##Live Link: https://gilded-rabanadas-d331ba.netlify.app/
+## Live Link: https://gilded-rabanadas-d331ba.netlify.app/
 
 A simple and interactive ToDo List application built with React and styled using Tailwind CSS. This project demonstrates state management, local storage usage, and responsive design.
 
