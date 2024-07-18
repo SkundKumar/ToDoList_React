@@ -19,7 +19,7 @@ export default function App() {
     localStorage.setItem('todoList',JSON.stringify(updatedTodo))
     return updatedTodo
    })
-   setNote("")
+   setNote(" ")
   }
   useEffect(() => {
     const storedTodoList = JSON.parse(localStorage.getItem('todoList')) || []
