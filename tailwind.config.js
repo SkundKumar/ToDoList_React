@@ -9,7 +9,8 @@ export default {
       },
       fontFamily:{
         body: ['Pixelify Sans']
-      }
+      },
+     
     },
   },
   plugins: [],

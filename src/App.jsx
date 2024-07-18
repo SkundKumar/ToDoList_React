@@ -36,8 +36,8 @@ export default function App() {
   };
   const arrow = '>'
   return (
-    
-      <div className='font-body bg-zinc-900 min-h-screen min-w-screen flex justify-center items-center  text-emerald-500 '>
+      
+      <div className=' bg-[url("https://www.transparenttextures.com/patterns/brilliant.png");] font-body bg-zinc-900 min-h-screen min-w-screen flex justify-center items-center  text-emerald-500 '>
         <div>
         <h1 className=' flex justify-center text-[8vw] mb-[1vh]  '>ToDo List</h1>
         <input onChange={handleChange}  className='text-emerald-500 px-2 w-[50vw] flex bg-zinc-900 border-double border-4 border-emerald-400  h-15 rounded-xl' placeholder=' Write new task.....' type="text" />
