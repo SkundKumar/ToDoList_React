@@ -26,23 +26,27 @@ export default function App() {
     setTodo(storedTodoList)
   }, [])
 
-  function handleSlash(){
-    setSlash(!slash)
-    console.log(slash)
-  }
+  
+
+  const deleteItem = (index) => { // Changed deleteItem function to accept index parameter
+    const updatedTodo = [...todo];
+    updatedTodo.splice(index, 1); // Removed item at the given index
+    setTodo(updatedTodo);
+    localStorage.setItem('todoList', JSON.stringify(updatedTodo));
+  };
   const arrow = '>'
   return (
     
-      <div className='bg-zinc-800 min-h-screen min-w-screen font-mono flex justify-center items-center'>
+      <div className='font-body bg-zinc-900 min-h-screen min-w-screen flex justify-center items-center  text-emerald-500 '>
         <div>
-        <h1 className=' flex justify-center text-red-100 text-[8vw] mb-[1vh] '>ToDo List</h1>
-        <input onChange={handleChange}  className='text-zinc-200 px-2 w-[50vw] flex bg-zinc-800 border-double border-4 border-red-300  h-15 rounded-xl' placeholder=' Write new task.....' type="text" />
+        <h1 className=' flex justify-center text-[8vw] mb-[1vh]  '>ToDo List</h1>
+        <input onChange={handleChange}  className='text-emerald-500 px-2 w-[50vw] flex bg-zinc-900 border-double border-4 border-emerald-400  h-15 rounded-xl' placeholder=' Write new task.....' type="text" />
         <motion.button whileHover={{scale:0.98}}
-                      whileTap={{scale: 1}} onClick={handleClick} className=' bg-red-300/90 text-zinc-800 font-semibold w-full h-12 rounded-xl mt-[2vh]' type="button">Submit</motion.button>
+                      whileTap={{scale: 1}} onClick={handleClick} className=' border-dotted border-2 border-emerald-500  font-semibold w-full h-12 rounded-xl mt-[2vh]' type="button">Submit</motion.button>
         <ul  className='mt-5'>
-          {todo.map((item,index)=>{
-           return <li style= {slash ? {textDecoration: "line-through"}: {textDecoration: "none"}} onClick={handleSlash}  key={index} className=' bg-red-200 w-fit text-zinc-800 m-2 p-1.5 font-semibold rounded-lg'> {arrow} {item}</li>
-          })}
+          {todo.map((item,index)=>(
+           <li onClick={deleteItem} key={index} id={index} className=' border-dotted border-2 border-emerald-400 w-fit  m-2 p-1.5 font-semibold rounded-lg'> {arrow} {item}</li>
+          ))}
           
         </ul>
         </div>
