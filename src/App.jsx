@@ -6,7 +6,7 @@ import {motion} from 'framer-motion'
 export default function App() {
   const [note, setNote] = useState("")
   const [todo, setTodo] = useState([])
-  
+  const [slash,setSlash] = useState(false)
   
   const handleChange = (event)=>{
     const newNote = event.target.value
@@ -25,18 +25,23 @@ export default function App() {
     const storedTodoList = JSON.parse(localStorage.getItem('todoList')) || []
     setTodo(storedTodoList)
   }, [])
+
+  function handleSlash(){
+    setSlash(!slash)
+    console.log(slash)
+  }
   const arrow = '>'
   return (
     
       <div className='bg-zinc-800 min-h-screen min-w-screen font-mono flex justify-center items-center'>
         <div>
         <h1 className=' flex justify-center text-red-100 text-[8vw] mb-[1vh] '>ToDo List</h1>
-        <input onChange={handleChange}  className='text-zinc-200 px-2 w-[50vw] flex bg-zinc-800 border-double border-4 border-red-300  h-15 rounded-xl' placeholder='  Write new task.....' type="text" />
+        <input onChange={handleChange}  className='text-zinc-200 px-2 w-[50vw] flex bg-zinc-800 border-double border-4 border-red-300  h-15 rounded-xl' placeholder=' Write new task.....' type="text" />
         <motion.button whileHover={{scale:0.98}}
                       whileTap={{scale: 1}} onClick={handleClick} className=' bg-red-300/90 text-zinc-800 font-semibold w-full h-12 rounded-xl mt-[2vh]' type="button">Submit</motion.button>
-        <ul className='mt-5'>
+        <ul  className='mt-5'>
           {todo.map((item,index)=>{
-           return <li  key={index} className='bg-red-200 w-fit text-zinc-800 m-2 p-1.5 font-semibold rounded-lg'> {arrow} {item}</li>
+           return <li style= {slash ? {textDecoration: "line-through"}: {textDecoration: "none"}} onClick={handleSlash}  key={index} className=' bg-red-200 w-fit text-zinc-800 m-2 p-1.5 font-semibold rounded-lg'> {arrow} {item}</li>
           })}
           
         </ul>
